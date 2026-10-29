@@ -1,0 +1,23 @@
+﻿{
+    "CheckedAtUTC":  "2026-10-17T17:50:31.8534009Z",
+    "Commands":  [
+
+                 ],
+    "CommonExecutablePaths":  [
+
+                              ],
+    "StorePackages":  [
+
+                      ],
+    "UninstallRegistryEntries":  [
+
+                                 ],
+    "RunningProcesses":  [
+
+                         ],
+    "RegistryUnreadableEntryCount":  0,
+    "StoreQueryErrorCount":  0,
+    "Result":  "No supported native authoring/validation engine detected in checked locations; a portable or other-user installation is not ruled out.",
+    "NativeReportCreated":  false,
+    "SoftwareInstalledOrModified":  false
+}

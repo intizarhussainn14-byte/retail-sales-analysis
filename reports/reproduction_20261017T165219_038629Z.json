@@ -1,0 +1,18 @@
+{
+  "status": "PASS: Python workflow executed; SQL, Excel and native Power BI not executed/built",
+  "raw_sha256": "43465a06f2ccf7c8b5bd2892bc7defb52f97487934fe93b16ae4c3936424676d",
+  "raw_unchanged": true,
+  "inspection": "reports/inspection_20261017T164936_708145Z",
+  "cleaning": "data/processed/cleaning_20261017T165110_899648Z",
+  "analysis": "reports/analysis_20261017T165141_531793Z",
+  "powerbi_package": "dashboard/powerbi_20261017T165202_057802Z",
+  "byte_identical_analysis_tables_vs_original": {
+    "kpis": true,
+    "monthly": true,
+    "top_products_revenue": true,
+    "top_products_quantity": true,
+    "countries": true,
+    "customer_purchases": true,
+    "repeat_purchasing": true
+  }
+}

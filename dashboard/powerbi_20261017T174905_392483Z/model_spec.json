@@ -1,0 +1,169 @@
+{
+  "artifact_kind": "Implementation specification; NOT a native semantic model or PBIP",
+  "culture": "en-GB",
+  "mode": "Import",
+  "tables": {
+    "FactSales": {
+      "source": "data/FactSales.csv",
+      "rows": 522540,
+      "columns": {
+        "SourceRow": "int64",
+        "InvoiceNo": "string",
+        "StockCode": "string",
+        "Quantity": "int64",
+        "InvoiceDate": "dateTime",
+        "SaleDate": "date",
+        "UnitPrice": "double (informational; do not recalculate sales)",
+        "CustomerID": "string",
+        "Country": "string",
+        "LineSalesPence": "int64",
+        "LineSalesGBP": "fixedDecimal",
+        "CustomerMetricsEligible": "int64",
+        "ProductKey": "int64"
+      }
+    },
+    "QualityRows": {
+      "source": "data/QualityRows.csv",
+      "rows": 541909,
+      "columns": {
+        "SourceRow": "int64",
+        "InvoiceDate": "dateTime",
+        "Country": "string",
+        "StockCode": "string",
+        "CustomerID": "string",
+        "LineSalesPence": "int64",
+        "Flag_missing_InvoiceNo": "int64",
+        "Flag_missing_StockCode": "int64",
+        "Flag_missing_Description": "int64",
+        "Flag_missing_Quantity": "int64",
+        "Flag_missing_InvoiceDate": "int64",
+        "Flag_missing_UnitPrice": "int64",
+        "Flag_missing_CustomerID": "int64",
+        "Flag_missing_Country": "int64",
+        "Flag_conversion_failure_Quantity": "int64",
+        "Flag_conversion_failure_UnitPrice": "int64",
+        "Flag_conversion_failure_InvoiceDate": "int64",
+        "Flag_fractional_quantity": "int64",
+        "Flag_cancellation": "int64",
+        "Flag_negative_quantity": "int64",
+        "Flag_zero_quantity": "int64",
+        "Flag_nonpositive_price": "int64",
+        "Flag_exact_duplicate_extra": "int64",
+        "Flag_exact_duplicate_group": "int64",
+        "Flag_nonproduct_code": "int64",
+        "Flag_unreviewed_stock_code": "int64",
+        "SaleDate": "date",
+        "IsIncluded": "int64",
+        "ExclusionRule": "string",
+        "ProductKey": "int64"
+      }
+    },
+    "DimDate": {
+      "source": "data/DimDate.csv",
+      "rows": 730,
+      "columns": {
+        "Date": "date",
+        "Year": "int64",
+        "MonthNumber": "int64",
+        "MonthStart": "date",
+        "YearMonth": "string",
+        "YearMonthSort": "int64",
+        "CoverageStatus": "string",
+        "MonthLabel": "string",
+        "IsComparableMonth": "int64",
+        "InObservationWindow": "int64"
+      }
+    },
+    "DimProduct": {
+      "source": "data/DimProduct.csv",
+      "rows": 4070,
+      "columns": {
+        "ProductKey": "int64",
+        "StockCode": "string",
+        "Description": "string",
+        "StockCodeUTF8Hex": "string",
+        "ProductLabel": "string"
+      }
+    },
+    "DimCountry": {
+      "source": "data/DimCountry.csv",
+      "rows": 38,
+      "columns": {
+        "Country": "string"
+      }
+    },
+    "CleaningSteps": {
+      "source": "data/CleaningSteps.csv",
+      "rows": 6,
+      "columns": {
+        "Step": "int64",
+        "ExclusionRule": "string",
+        "BeforeRows": "int64",
+        "ExcludedRows": "int64",
+        "AfterRows": "int64",
+        "ExcludedSignedGBP": "fixedDecimal",
+        "ExcludedAbsoluteGBP": "fixedDecimal",
+        "UnvaluedRows": "int64"
+      }
+    }
+  },
+  "relationships": [
+    {
+      "one": "DimDate[Date]",
+      "many": "FactSales[SaleDate]",
+      "active": true,
+      "cardinality": "oneToMany",
+      "direction": "single"
+    },
+    {
+      "one": "DimDate[Date]",
+      "many": "QualityRows[SaleDate]",
+      "active": true,
+      "cardinality": "oneToMany",
+      "direction": "single"
+    },
+    {
+      "one": "DimProduct[ProductKey]",
+      "many": "FactSales[ProductKey]",
+      "active": true,
+      "cardinality": "oneToMany",
+      "direction": "single"
+    },
+    {
+      "one": "DimProduct[ProductKey]",
+      "many": "QualityRows[ProductKey]",
+      "active": true,
+      "cardinality": "oneToMany",
+      "direction": "single"
+    },
+    {
+      "one": "DimCountry[Country]",
+      "many": "FactSales[Country]",
+      "active": true,
+      "cardinality": "oneToMany",
+      "direction": "single"
+    },
+    {
+      "one": "DimCountry[Country]",
+      "many": "QualityRows[Country]",
+      "active": true,
+      "cardinality": "oneToMany",
+      "direction": "single"
+    }
+  ],
+  "date_table": {
+    "table": "DimDate",
+    "column": "Date",
+    "autoDateTime": false
+  },
+  "sort_by": {
+    "DimDate[MonthLabel]": "YearMonthSort",
+    "DimDate[YearMonth]": "YearMonthSort"
+  },
+  "disconnected": [
+    "CleaningSteps"
+  ],
+  "monetary_policy": "Revenue = SUM(FactSales[LineSalesPence])/100; line rounding unchanged",
+  "customer_policy": "Repeat Customers / Known Customers, in active date/country/product context; missing IDs excluded only here",
+  "native_validation": "NOT RUN: no Desktop or supported authoring engine detected"
+}

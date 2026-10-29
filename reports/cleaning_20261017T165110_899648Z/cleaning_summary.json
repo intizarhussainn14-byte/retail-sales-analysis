@@ -1,0 +1,98 @@
+{
+  "source": "F:\\Data Science\\Retail Sales Analysis Dashboard\\data\\raw\\Online Retail.xlsx",
+  "source_sha256": "43465a06f2ccf7c8b5bd2892bc7defb52f97487934fe93b16ae4c3936424676d",
+  "raw_unchanged": true,
+  "input_rows": 541909,
+  "completed_sales_rows": 522540,
+  "audit_rows": 155564,
+  "excluded_rows": 19369,
+  "output_sha256": {
+    "completed_sales.csv": "094fbf634055c2cd3f6410cf0ebaff28948c24cee62ccba7461d4d0f73bb202a",
+    "audit.csv": "0d564434d65c2d23eab4da57b5a8b57f3673a282c1494d33551f4babfdc29234"
+  },
+  "completed_sales_GBP": "10247219.32",
+  "retained_missing_customer_rows": 131387,
+  "flag_counts": {
+    "Flag_missing_InvoiceNo": 0,
+    "Flag_missing_StockCode": 0,
+    "Flag_missing_Description": 1454,
+    "Flag_missing_Quantity": 0,
+    "Flag_missing_InvoiceDate": 0,
+    "Flag_missing_UnitPrice": 0,
+    "Flag_missing_CustomerID": 135080,
+    "Flag_missing_Country": 0,
+    "Flag_conversion_failure_Quantity": 0,
+    "Flag_conversion_failure_UnitPrice": 0,
+    "Flag_conversion_failure_InvoiceDate": 0,
+    "Flag_fractional_quantity": 0,
+    "Flag_cancellation": 9288,
+    "Flag_negative_quantity": 10624,
+    "Flag_zero_quantity": 0,
+    "Flag_nonpositive_price": 2517,
+    "Flag_exact_duplicate_extra": 5268,
+    "Flag_exact_duplicate_group": 10147,
+    "Flag_nonproduct_code": 2946,
+    "Flag_unreviewed_stock_code": 9
+  },
+  "stages": [
+    {
+      "rule": "invalid_required_fields",
+      "before": 541909,
+      "excluded": 0,
+      "after": 541909,
+      "excluded_signed_GBP": "0.00",
+      "excluded_absolute_GBP": "0.00",
+      "excluded_unvalued_rows": 0
+    },
+    {
+      "rule": "cancellation",
+      "before": 541909,
+      "excluded": 9288,
+      "after": 532621,
+      "excluded_signed_GBP": "-896812.49",
+      "excluded_absolute_GBP": "896812.49",
+      "excluded_unvalued_rows": 0
+    },
+    {
+      "rule": "nonpositive_quantity",
+      "before": 532621,
+      "excluded": 1336,
+      "after": 531285,
+      "excluded_signed_GBP": "0.00",
+      "excluded_absolute_GBP": "0.00",
+      "excluded_unvalued_rows": 0
+    },
+    {
+      "rule": "nonpositive_price",
+      "before": 531285,
+      "excluded": 1181,
+      "after": 530104,
+      "excluded_signed_GBP": "-22124.12",
+      "excluded_absolute_GBP": "22124.12",
+      "excluded_unvalued_rows": 0
+    },
+    {
+      "rule": "nonproduct_or_unreviewed_code",
+      "before": 530104,
+      "excluded": 2343,
+      "after": 527761,
+      "excluded_signed_GBP": "395251.48",
+      "excluded_absolute_GBP": "395251.48",
+      "excluded_unvalued_rows": 0
+    },
+    {
+      "rule": "exact_duplicate_extra",
+      "before": 527761,
+      "excluded": 5221,
+      "after": 522540,
+      "excluded_signed_GBP": "24213.74",
+      "excluded_absolute_GBP": "24213.74",
+      "excluded_unvalued_rows": 0
+    }
+  ],
+  "validation": [
+    "PASS: row provenance, eligibility, missing customer preservation, duplicate policy,",
+    "identifier/date completeness, multi-line invoices and integer-pence reconciliation.",
+    "PASS: source hash and CSV round-trip identifiers/missing customers."
+  ]
+}

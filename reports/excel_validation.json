@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "checked_reference_cells": 359,
+  "formula_count": 146,
+  "formula_errors": 0,
+  "native_pivottables": 2,
+  "native_charts": 4,
+  "engine": {
+    "PDFs": [
+      "F:\\Data Science\\Retail Sales Analysis Dashboard\\reports\\excel_qa\\run_20261017T174111_306326Z\\Overview.pdf",
+      "F:\\Data Science\\Retail Sales Analysis Dashboard\\reports\\excel_qa\\run_20261017T174111_306326Z\\Monthly_Sales.pdf",
+      "F:\\Data Science\\Retail Sales Analysis Dashboard\\reports\\excel_qa\\run_20261017T174111_306326Z\\Top_Products.pdf",
+      "F:\\Data Science\\Retail Sales Analysis Dashboard\\reports\\excel_qa\\run_20261017T174111_306326Z\\Country_Performance.pdf",
+      "F:\\Data Science\\Retail Sales Analysis Dashboard\\reports\\excel_qa\\run_20261017T174111_306326Z\\Customer_Analysis.pdf",
+      "F:\\Data Science\\Retail Sales Analysis Dashboard\\reports\\excel_qa\\run_20261017T174111_306326Z\\Data_Quality.pdf",
+      "F:\\Data Science\\Retail Sales Analysis Dashboard\\reports\\excel_qa\\run_20261017T174111_306326Z\\Sources.pdf"
+    ],
+    "PivotTables": 2,
+    "Calculation": "CalculateFullRebuild",
+    "Charts": 4,
+    "NativePivotSource": "Verified embedded monthly/country summary rows",
+    "ExcelVersion": "16.0"
+  },
+  "sheets": [
+    "Overview",
+    "Monthly Sales",
+    "Top Products",
+    "Country Performance",
+    "Customer Analysis",
+    "Data Quality",
+    "Sources"
+  ],
+  "source_hashes": {
+    "kpis": "c2c8b1e0d0e9251ef8fd0359884e0633ff906d725f03b8a9403727a0ab872d81",
+    "monthly": "5b237837917d7584ddaab6b21a00680a83d5c43347ab42d76ec6bb7708f7326e",
+    "countries": "7d60149adc5bcf77be02175f0777ebc1c32f8cac073d0c54e6df08080b6d38ab",
+    "top_products_revenue": "5196314c18b0187819e14f543d97824865170360a8077927993da65c0191fad8",
+    "top_products_quantity": "2ac53d653e6c2e433ec1fa8c033ef4bfb410e653b8139eae5b6ffe6836b3bfef",
+    "customer_purchases": "31d8a45aba7e0d99f39eb4cb26d6d33e4517900bba30bf15fdf4ce6a29c51de4",
+    "repeat_purchasing": "f1a1ccf1d7d96d7b661ef72afc25e86fa41ba1768e5fca005860c74568a56962"
+  },
+  "scope": "Excel calculated caches compared to verified Python outputs; SQL evidence validated. Visual previews require separate inspection.",
+  "workbook": "reports/Retail_Sales_Analysis.xlsx",
+  "workbook_sha256": "0326f425f6a0fd7b18863d42f92c5a84d9c4b1416b45abb2dcda78d51bb3b035",
+  "qa_folder": "reports/excel_qa/run_20261017T174111_306326Z",
+  "visual_review": {
+    "status": "PASS",
+    "pages_reviewed": 9,
+    "all_seven_sheets": true,
+    "final_previews_pixel_identical_to_reviewed_previews": true,
+    "issues_fixed": [
+      "chart axis references",
+      "native chart labels and bounds",
+      "print scaling",
+      "Sources frozen-pane metadata"
+    ]
+  }
+}

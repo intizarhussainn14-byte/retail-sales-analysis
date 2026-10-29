@@ -1,0 +1,162 @@
+// POWER BI DESKTOP MEASURE DEFINITIONS, NOT A DAX QUERY SCRIPT.
+// Create one measure at a time: select FactSales, Modeling > New measure, paste
+// one Name = expression block. Keep table names from the supplied M queries.
+// These expressions have NOT been executed in a Power BI engine here.
+
+Revenue Pence = SUM ( FactSales[LineSalesPence] )
+
+Revenue GBP = DIVIDE ( [Revenue Pence], 100 )
+
+Completed Orders = DISTINCTCOUNT ( FactSales[InvoiceNo] )
+
+Units Sold = SUM ( FactSales[Quantity] )
+
+Average Order Value GBP = DIVIDE ( [Revenue GBP], [Completed Orders] )
+
+Known Customers =
+CALCULATE (
+    DISTINCTCOUNT ( FactSales[CustomerID] ),
+    KEEPFILTERS ( FactSales[CustomerID] <> BLANK () )
+)
+
+Repeat Customers =
+COUNTROWS (
+    FILTER (
+        FILTER ( VALUES ( FactSales[CustomerID] ), NOT ISBLANK ( FactSales[CustomerID] ) ),
+        CALCULATE ( [Completed Orders] ) >= 2
+    )
+)
+
+Repeat Customer Rate = DIVIDE ( [Repeat Customers], [Known Customers] )
+
+Retained Missing Customer Lines =
+CALCULATE ( COUNTROWS ( FactSales ), KEEPFILTERS ( FactSales[CustomerMetricsEligible] = 0 ) )
+
+// Use MonthLabel from DimDate for the trend. The total row returns no status.
+Month Coverage = SELECTEDVALUE ( DimDate[CoverageStatus], "Multiple months / see coverage note" )
+
+// Observed previous-month comparison. Date removal is limited to DimDate:
+// country and product filters continue to apply. Requires a single complete
+// selected calendar month, so an arbitrary mid-month date slicer cannot produce
+// a misleading comparison against an entire previous month.
+Observed MoM Change GBP =
+VAR ThisMonth = SELECTEDVALUE ( DimDate[MonthStart] )
+VAR FullSelectedMonth =
+    NOT ISBLANK ( ThisMonth )
+        && COUNTROWS ( VALUES ( DimDate[Date] ) ) = DAY ( EOMONTH ( ThisMonth, 0 ) )
+VAR PreviousStart = EDATE ( ThisMonth, -1 )
+VAR PreviousRevenue =
+    CALCULATE (
+        [Revenue GBP],
+        FILTER ( ALL ( DimDate ), DimDate[Date] >= PreviousStart && DimDate[Date] < ThisMonth )
+    )
+RETURN
+    IF ( FullSelectedMonth && NOT ISBLANK ( PreviousRevenue ) && NOT ISBLANK ( [Revenue GBP] ),
+        [Revenue GBP] - PreviousRevenue )
+
+Observed MoM Percent =
+VAR ThisMonth = SELECTEDVALUE ( DimDate[MonthStart] )
+VAR PreviousStart = EDATE ( ThisMonth, -1 )
+VAR PreviousRevenue =
+    CALCULATE (
+        [Revenue GBP],
+        FILTER ( ALL ( DimDate ), DimDate[Date] >= PreviousStart && DimDate[Date] < ThisMonth )
+    )
+RETURN DIVIDE ( [Observed MoM Change GBP], PreviousRevenue )
+
+// Display this measure for growth claims. Boundary months are excluded even
+// when their date slicer selection happens to cover an entire calendar month.
+Comparable MoM Percent =
+VAR ThisMonth = SELECTEDVALUE ( DimDate[MonthStart] )
+VAR PriorMonthStart = EDATE ( ThisMonth, -1 )
+VAR CurrentComparable = SELECTEDVALUE ( DimDate[IsComparableMonth], 0 )
+VAR PreviousComparable =
+    CALCULATE (
+        MAX ( DimDate[IsComparableMonth] ),
+        FILTER ( ALL ( DimDate ), DimDate[MonthStart] = PriorMonthStart )
+    )
+RETURN IF ( CurrentComparable = 1 && PreviousComparable = 1, [Observed MoM Percent] )
+
+// Same qualification as the percentage; use this for the GBP change column.
+Comparable MoM Change GBP =
+VAR ThisMonth = SELECTEDVALUE ( DimDate[MonthStart] )
+VAR PriorMonthStart = EDATE ( ThisMonth, -1 )
+VAR CurrentComparable = SELECTEDVALUE ( DimDate[IsComparableMonth], 0 )
+VAR PreviousComparable =
+    CALCULATE (
+        MAX ( DimDate[IsComparableMonth] ),
+        FILTER ( ALL ( DimDate ), DimDate[MonthStart] = PriorMonthStart )
+    )
+RETURN IF ( CurrentComparable = 1 && PreviousComparable = 1, [Observed MoM Change GBP] )
+
+// ALLSELECTED(DimProduct) removes the current product-axis row but preserves
+// external selections. Date/country remain in context. Do not rank a static
+// Python top-ten table. Integer pence avoids floating-point revenue rank ties.
+Product Revenue Rank =
+IF (
+    HASONEVALUE ( DimProduct[ProductKey] ) && NOT ISBLANK ( [Revenue Pence] ),
+    RANKX (
+        FILTER ( ALLSELECTED ( DimProduct ), CALCULATE ( [Revenue Pence] ) > 0 ),
+        [Revenue Pence], , DESC, DENSE
+    )
+)
+
+// Exact top ten: numeric ProductKey is assigned in StockCode ascending order.
+// Secondary sorting therefore matches Python's deterministic tie-break.
+// A dense-rank <=10 filter alone can show more than ten products on ties.
+Show Top 10 Revenue =
+VAR CurrentKey = SELECTEDVALUE ( DimProduct[ProductKey] )
+VAR Candidates = FILTER ( ALLSELECTED ( DimProduct ), CALCULATE ( [Revenue Pence] ) > 0 )
+VAR TopProducts = TOPN ( 10, Candidates, [Revenue Pence], DESC, DimProduct[ProductKey], ASC )
+RETURN IF ( NOT ISBLANK ( CurrentKey ) && CONTAINS ( TopProducts, DimProduct[ProductKey], CurrentKey ), 1, 0 )
+
+Show Top 10 Quantity =
+VAR CurrentKey = SELECTEDVALUE ( DimProduct[ProductKey] )
+VAR Candidates = FILTER ( ALLSELECTED ( DimProduct ), CALCULATE ( [Units Sold] ) > 0 )
+VAR TopProducts = TOPN ( 10, Candidates, [Units Sold], DESC, DimProduct[ProductKey], ASC )
+RETURN IF ( NOT ISBLANK ( CurrentKey ) && CONTAINS ( TopProducts, DimProduct[ProductKey], CurrentKey ), 1, 0 )
+
+// QualityRows has EVERY original row once, reconstructed from completed sales
+// plus excluded audit records. It is not the audit CSV alone, whose retained
+// flagged rows overlap sales. Flag counts overlap; exclusion rules are disjoint.
+Raw Lines = COUNTROWS ( QualityRows )
+
+Included Lines = CALCULATE ( [Raw Lines], KEEPFILTERS ( QualityRows[IsIncluded] = 1 ) )
+
+Excluded Lines = CALCULATE ( [Raw Lines], KEEPFILTERS ( QualityRows[IsIncluded] = 0 ) )
+
+Exclusion Rate = DIVIDE ( [Excluded Lines], [Raw Lines] )
+
+Raw Missing Customer Lines = SUM ( QualityRows[Flag_missing_CustomerID] )
+
+Raw Missing Customer Rate = DIVIDE ( [Raw Missing Customer Lines], [Raw Lines] )
+
+Missing Description Lines = SUM ( QualityRows[Flag_missing_Description] )
+
+Cancellation Lines = SUM ( QualityRows[Flag_cancellation] )
+
+Negative Quantity Lines = SUM ( QualityRows[Flag_negative_quantity] )
+
+Nonpositive Price Lines = SUM ( QualityRows[Flag_nonpositive_price] )
+
+Exact Duplicate Extras = SUM ( QualityRows[Flag_exact_duplicate_extra] )
+
+Conversion Failure Lines =
+COUNTROWS (
+    FILTER (
+        QualityRows,
+        QualityRows[Flag_conversion_failure_Quantity] = 1
+            || QualityRows[Flag_conversion_failure_UnitPrice] = 1
+            || QualityRows[Flag_conversion_failure_InvoiceDate] = 1
+    )
+)
+
+Excluded Signed Value GBP =
+DIVIDE (
+    CALCULATE ( SUM ( QualityRows[LineSalesPence] ), KEEPFILTERS ( QualityRows[IsIncluded] = 0 ) ),
+    100
+)
+
+// This is signed excluded transaction value, NOT lost revenue or net returns.
+// No relationship from CleaningSteps: its values are GLOBAL reference counts
+// and must be titled "Global cleaning reference — unaffected by slicers".

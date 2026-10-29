@@ -1,0 +1,35 @@
+let
+    Source = fnLoadCsv("QualityRows.csv", {
+        {"SourceRow", Int64.Type},
+        {"InvoiceDate", type datetime},
+        {"Country", type text},
+        {"StockCode", type text},
+        {"CustomerID", type text},
+        {"LineSalesPence", Int64.Type},
+        {"Flag_missing_InvoiceNo", Int64.Type},
+        {"Flag_missing_StockCode", Int64.Type},
+        {"Flag_missing_Description", Int64.Type},
+        {"Flag_missing_Quantity", Int64.Type},
+        {"Flag_missing_InvoiceDate", Int64.Type},
+        {"Flag_missing_UnitPrice", Int64.Type},
+        {"Flag_missing_CustomerID", Int64.Type},
+        {"Flag_missing_Country", Int64.Type},
+        {"Flag_conversion_failure_Quantity", Int64.Type},
+        {"Flag_conversion_failure_UnitPrice", Int64.Type},
+        {"Flag_conversion_failure_InvoiceDate", Int64.Type},
+        {"Flag_fractional_quantity", Int64.Type},
+        {"Flag_cancellation", Int64.Type},
+        {"Flag_negative_quantity", Int64.Type},
+        {"Flag_zero_quantity", Int64.Type},
+        {"Flag_nonpositive_price", Int64.Type},
+        {"Flag_exact_duplicate_extra", Int64.Type},
+        {"Flag_exact_duplicate_group", Int64.Type},
+        {"Flag_nonproduct_code", Int64.Type},
+        {"Flag_unreviewed_stock_code", Int64.Type},
+        {"SaleDate", type date},
+        {"IsIncluded", Int64.Type},
+        {"ExclusionRule", type text},
+        {"ProductKey", Int64.Type}
+    })
+in
+    Source

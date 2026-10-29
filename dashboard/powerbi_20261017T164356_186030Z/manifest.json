@@ -1,0 +1,124 @@
+{
+  "status": "DATA AND BUILD INSTRUCTIONS ONLY; NO PBIX CREATED; M AND DAX NOT EXECUTED IN POWER BI",
+  "analysis_folder": "F:\\Data Science\\Retail Sales Analysis Dashboard\\reports\\analysis_20261017T163159_486015Z",
+  "sales_sha256": "094fbf634055c2cd3f6410cf0ebaff28948c24cee62ccba7461d4d0f73bb202a",
+  "audit_sha256": "0d564434d65c2d23eab4da57b5a8b57f3673a282c1494d33551f4babfdc29234",
+  "raw_sha256_from_cleaning": "43465a06f2ccf7c8b5bd2892bc7defb52f97487934fe93b16ae4c3936424676d",
+  "coverage_start": "2010-12-01 08:26:00",
+  "coverage_end": "2011-12-09 12:50:00",
+  "case_collision_codes": 224,
+  "tables": {
+    "FactSales": {
+      "rows": 522540,
+      "columns": [
+        "SourceRow",
+        "InvoiceNo",
+        "StockCode",
+        "Quantity",
+        "InvoiceDate",
+        "SaleDate",
+        "UnitPrice",
+        "CustomerID",
+        "Country",
+        "LineSalesPence",
+        "LineSalesGBP",
+        "CustomerMetricsEligible",
+        "ProductKey"
+      ],
+      "sha256": "f0195788964d073bcb25532f6505ce2f3e85e400ee53c6d09473b01c80d75f3d"
+    },
+    "QualityRows": {
+      "rows": 541909,
+      "columns": [
+        "SourceRow",
+        "InvoiceDate",
+        "Country",
+        "StockCode",
+        "CustomerID",
+        "LineSalesPence",
+        "Flag_missing_InvoiceNo",
+        "Flag_missing_StockCode",
+        "Flag_missing_Description",
+        "Flag_missing_Quantity",
+        "Flag_missing_InvoiceDate",
+        "Flag_missing_UnitPrice",
+        "Flag_missing_CustomerID",
+        "Flag_missing_Country",
+        "Flag_conversion_failure_Quantity",
+        "Flag_conversion_failure_UnitPrice",
+        "Flag_conversion_failure_InvoiceDate",
+        "Flag_fractional_quantity",
+        "Flag_cancellation",
+        "Flag_negative_quantity",
+        "Flag_zero_quantity",
+        "Flag_nonpositive_price",
+        "Flag_exact_duplicate_extra",
+        "Flag_exact_duplicate_group",
+        "Flag_nonproduct_code",
+        "Flag_unreviewed_stock_code",
+        "SaleDate",
+        "IsIncluded",
+        "ExclusionRule",
+        "ProductKey"
+      ],
+      "sha256": "1200a1e767801b7b4acd0af90e2e08467d2088e2ca5fdcf086c090ec4075a241"
+    },
+    "DimDate": {
+      "rows": 730,
+      "columns": [
+        "Date",
+        "Year",
+        "MonthNumber",
+        "MonthStart",
+        "YearMonth",
+        "YearMonthSort",
+        "CoverageStatus",
+        "MonthLabel",
+        "IsComparableMonth",
+        "InObservationWindow"
+      ],
+      "sha256": "65b7ae7597a85916f913c80d825c4c8433568e5ae6097c7dee101036e3c1e4db"
+    },
+    "DimProduct": {
+      "rows": 4070,
+      "columns": [
+        "ProductKey",
+        "StockCode",
+        "Description",
+        "StockCodeUTF8Hex",
+        "ProductLabel"
+      ],
+      "sha256": "88d2fc7403b4a22211024c95d1ed97d71ba8544e4862e3f5d37f9633bfdf72a1"
+    },
+    "DimCountry": {
+      "rows": 38,
+      "columns": [
+        "Country"
+      ],
+      "sha256": "8964faa7bd210c02561f6872bf9b6df73634244aa288502d5727b2c879382ea0"
+    },
+    "CleaningSteps": {
+      "rows": 6,
+      "columns": [
+        "Step",
+        "ExclusionRule",
+        "BeforeRows",
+        "ExcludedRows",
+        "AfterRows",
+        "ExcludedSignedGBP",
+        "ExcludedAbsoluteGBP",
+        "UnvaluedRows"
+      ],
+      "sha256": "3a9daa0815f766f41472eaa2e2bc784f831d8c816ea3a45a8028b086df77bd84"
+    }
+  },
+  "checks": [
+    "Validated analysis source hash and headline totals",
+    "All raw rows reconstructed exactly once by SourceRow",
+    "All quality flag counts and disjoint exclusion rule amounts match cleaning summary",
+    "Numeric ProductKey and collision-safe ProductLabel preserve case-distinct stock codes; hex records exact source bytes",
+    "Date table continuous, full calendar years, all facts covered",
+    "CSV round-trip preserves revenue pence, identifiers and missing customers",
+    "Six filter scenarios and both top-ten metrics computed from line-level data"
+  ]
+}

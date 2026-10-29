@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-10-29T17:48:52.487128+00:00",
+  "candidate_file_count": 112,
+  "candidate_bytes": 628142,
+  "secret_pattern_hits": [],
+  "files_over_50MB": [],
+  "broken_local_markdown_links": [],
+  "unprotected_paths": [],
+  "git_remotes": [
+    "origin"
+  ],
+  "credential_named_files_found": [],
+  "scope": "Git candidate text files; common secret patterns only. Raw binaries, ignored local files and historical Git objects are not comprehensively secret-scanned. No history exists yet.",
+  "ownership_note": "Audit uses a command-scoped safe.directory for this exact checkout; no global trust settings are changed."
+}

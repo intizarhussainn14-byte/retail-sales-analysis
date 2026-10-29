@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "database": "retail_sales_analysis",
+  "server": {
+    "ServerVersion": "10.4.32-MariaDB",
+    "ServerPort": "3306"
+  },
+  "load_validation": {
+    "RowsLoaded": "522540",
+    "TotalPence": "1024721932",
+    "RevenueGBP": "10247219.32",
+    "MissingCustomerRows": "131387",
+    "DistinctProductCodes": "3908",
+    "InvalidRows": "0"
+  },
+  "invoice_conflicts": 0,
+  "python_report": "reports/analysis_20261017T165141_531793Z",
+  "results_folder": "reports/sql_results/sql_20261017T171530_730533Z",
+  "tables": {
+    "kpis": {
+      "status": "PASS",
+      "rows": 1,
+      "query_sha256": "897393c8411aaea597dcee555c7905641436724821af438ea696b1312fc749f2",
+      "result_sha256": "2e87bfb6c40a2f4a82a643bd5e8f7af286f9cb804c9de8c6d215dc28fab57b5f"
+    },
+    "monthly": {
+      "status": "PASS",
+      "rows": 13,
+      "query_sha256": "144a373cb7c5248a4bf747fce62f7a3dde6ad6f37e3912c304e919bdb1a2dc73",
+      "result_sha256": "6e405ebf50bec93b4da313d8e0359442a9967c4474004db2f1f18bdbe15d5764"
+    },
+    "countries": {
+      "status": "PASS",
+      "rows": 38,
+      "query_sha256": "e0204376a993ec1c2f8af36c0a309eb9283482afa9998ea09c3821f2e82259a6",
+      "result_sha256": "fd3d77a4af484bc995e464a36b6ded34531303326bc77453714e1dc67b82a97f"
+    },
+    "top_products_revenue": {
+      "status": "PASS",
+      "rows": 10,
+      "query_sha256": "f667a8e1a07b633a0718a561c5aa28f0e3baaa0b1727bf7dccc1c674bbc1caf1",
+      "result_sha256": "86be62a1dc6d3f903260e65b3addace69d44beda876c9edd12e20d8ba6d38e26"
+    },
+    "top_products_quantity": {
+      "status": "PASS",
+      "rows": 10,
+      "query_sha256": "c0fc058dce9650826ff67cbca93fe512dd263a4da7dfe8dc315d1d89a7faade7",
+      "result_sha256": "8672424c1c5946e52ed0d243ebced041bc6540b9c87eb137e483f79c4681214e"
+    },
+    "customer_purchases": {
+      "status": "PASS",
+      "rows": 4334,
+      "query_sha256": "41bdf0c85e314044720a47295ab3bd576e3be381e948ad337b4e7a06ce212f06",
+      "result_sha256": "e6cb4a05bfa0eb0bfdff8974b6104ef04238e46b251772328de496aa591583a7"
+    },
+    "repeat_purchasing": {
+      "status": "PASS",
+      "rows": 1,
+      "query_sha256": "9b9ef2f2109b40611c896a6fb8aa5842b7328d557e33968f2633e6289da57a09",
+      "result_sha256": "40a2f187abbf90d65ce3bdd40bb1767c25fd4125ef970c6382b6cb4d9c229651"
+    }
+  },
+  "comparison": "Semantic row keys; exact Decimal values; NULL-to-blank; string IDs preserved. No tolerance hides penny differences."
+}

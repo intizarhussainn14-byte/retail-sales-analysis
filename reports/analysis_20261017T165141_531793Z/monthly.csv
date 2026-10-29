@@ -1,0 +1,14 @@
+Month,CompletedOrders,CoverageStatus,RevenueGBP,ObservedMoMChangeGBP,ObservedMoMPct,ComparableMoMPct
+2010-12,1550,boundary_start_day_1_unverified,775638.36,,,
+2011-01,1081,interior_calendar_month,670380.24,-105258.12,-13.57,
+2011-02,1093,interior_calendar_month,507799.87,-162580.37,-24.25,-24.25
+2011-03,1440,interior_calendar_month,689833.51,182033.64,35.85,35.85
+2011-04,1235,interior_calendar_month,515377.99,-174455.52,-25.29,-25.29
+2011-05,1668,interior_calendar_month,739953.00,224575.01,43.57,43.57
+2011-06,1525,interior_calendar_month,737558.98,-2394.02,-0.32,-0.32
+2011-07,1452,interior_calendar_month,688219.34,-49339.64,-6.69,-6.69
+2011-08,1339,interior_calendar_month,724216.50,35997.16,5.23,5.23
+2011-09,1818,interior_calendar_month,1028320.38,304103.88,41.99,41.99
+2011-10,2005,interior_calendar_month,1103314.25,74993.87,7.29,7.29
+2011-11,2751,interior_calendar_month,1452115.98,348801.73,31.61,31.61
+2011-12,816,partial_end,614490.92,-837625.06,-57.68,

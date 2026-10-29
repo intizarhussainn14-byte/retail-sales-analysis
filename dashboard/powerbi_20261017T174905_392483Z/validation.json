@@ -1,0 +1,58 @@
+{
+  "status": "PASS: Python-side import and reference reconciliation only",
+  "package": "dashboard/powerbi_20261017T174905_392483Z",
+  "analysis_tables": {
+    "kpis": {
+      "rows": 1,
+      "status": "PASS",
+      "sha256": "c2c8b1e0d0e9251ef8fd0359884e0633ff906d725f03b8a9403727a0ab872d81"
+    },
+    "monthly": {
+      "rows": 13,
+      "status": "PASS",
+      "sha256": "5b237837917d7584ddaab6b21a00680a83d5c43347ab42d76ec6bb7708f7326e"
+    },
+    "top_products_revenue": {
+      "rows": 10,
+      "status": "PASS",
+      "sha256": "5196314c18b0187819e14f543d97824865170360a8077927993da65c0191fad8"
+    },
+    "top_products_quantity": {
+      "rows": 10,
+      "status": "PASS",
+      "sha256": "2ac53d653e6c2e433ec1fa8c033ef4bfb410e653b8139eae5b6ffe6836b3bfef"
+    },
+    "countries": {
+      "rows": 38,
+      "status": "PASS",
+      "sha256": "7d60149adc5bcf77be02175f0777ebc1c32f8cac073d0c54e6df08080b6d38ab"
+    },
+    "customer_purchases": {
+      "rows": 4334,
+      "status": "PASS",
+      "sha256": "31d8a45aba7e0d99f39eb4cb26d6d33e4517900bba30bf15fdf4ce6a29c51de4"
+    },
+    "repeat_purchasing": {
+      "rows": 1,
+      "status": "PASS",
+      "sha256": "f1a1ccf1d7d96d7b661ef72afc25e86fa41ba1768e5fca005860c74568a56962"
+    }
+  },
+  "scenarios_checked": 6,
+  "top_ten_lists_checked": 12,
+  "import_rows": {
+    "FactSales": 522540,
+    "QualityRows": 541909,
+    "DimDate": 730,
+    "DimProduct": 4070,
+    "DimCountry": 38,
+    "CleaningSteps": 6
+  },
+  "protected_raw_cleaned_audit_excel_hashes": "PASS",
+  "sql_and_excel_reference_hashes": "PASS",
+  "relationship_integrity": "PASS: six dimension-to-fact foreign keys; continuous calendar",
+  "native_report_created": false,
+  "m_executed": false,
+  "dax_executed": false,
+  "visuals_and_interactions_checked_in_desktop": false
+}

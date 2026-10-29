@@ -1,0 +1,121 @@
+Scenario,Metric,Rank,StockCode,RevenueGBP,Units
+All,Revenue,1,22423,174156.54,13851
+All,Revenue,2,23843,168469.60,80995
+All,Revenue,3,85123A,104462.75,37641
+All,Revenue,4,47566,99445.23,18283
+All,Revenue,5,85099B,94159.81,48371
+All,Revenue,6,23166,81700.92,78033
+All,Revenue,7,23084,66870.03,30739
+All,Revenue,8,22086,64875.59,19329
+All,Revenue,9,84879,58927.62,36362
+All,Revenue,10,79321,54096.36,10302
+All,Quantity,1,23843,168469.60,80995
+All,Quantity,2,23166,81700.92,78033
+All,Quantity,3,22197,51334.47,56898
+All,Quantity,4,84077,13814.01,54951
+All,Quantity,5,85099B,94159.81,48371
+All,Quantity,6,85123A,104462.75,37641
+All,Quantity,7,21212,21246.45,36396
+All,Quantity,8,84879,58927.62,36362
+All,Quantity,9,23084,66870.03,30739
+All,Quantity,10,22492,16937.82,26633
+United Kingdom,Revenue,1,23843,168469.60,80995
+United Kingdom,Revenue,2,22423,141996.09,11044
+United Kingdom,Revenue,3,85123A,98670.65,35491
+United Kingdom,Revenue,4,47566,93599.43,16961
+United Kingdom,Revenue,5,85099B,86291.10,44161
+United Kingdom,Revenue,6,23166,80575.63,77036
+United Kingdom,Revenue,7,22086,62683.54,18510
+United Kingdom,Revenue,8,84879,54589.48,33636
+United Kingdom,Revenue,9,79321,53315.16,10150
+United Kingdom,Revenue,10,22502,50580.87,1775
+United Kingdom,Quantity,1,23843,168469.60,80995
+United Kingdom,Quantity,2,23166,80575.63,77036
+United Kingdom,Quantity,3,22197,48514.17,53320
+United Kingdom,Quantity,4,84077,12282.04,49430
+United Kingdom,Quantity,5,85099B,86291.10,44161
+United Kingdom,Quantity,6,85123A,98670.65,35491
+United Kingdom,Quantity,7,84879,54589.48,33636
+United Kingdom,Quantity,8,22616,7642.86,25111
+United Kingdom,Quantity,9,21212,15741.42,24963
+United Kingdom,Quantity,10,22178,32280.42,23663
+January 2011,Revenue,1,23166,77183.60,74215
+January 2011,Revenue,2,85123A,15205.51,5527
+January 2011,Revenue,3,22423,12800.60,1036
+January 2011,Revenue,4,21108,6870.41,3246
+January 2011,Revenue,5,79321,5891.23,1384
+January 2011,Revenue,6,22470,5600.61,1771
+January 2011,Revenue,7,22469,5211.44,2918
+January 2011,Revenue,8,48185,5206.23,753
+January 2011,Revenue,9,22720,5153.57,1102
+January 2011,Revenue,10,85099B,5047.65,2747
+January 2011,Quantity,1,23166,77183.60,74215
+January 2011,Quantity,2,85123A,15205.51,5527
+January 2011,Quantity,3,21212,1674.36,3408
+January 2011,Quantity,4,21108,6870.41,3246
+January 2011,Quantity,5,17003,525.50,3181
+January 2011,Quantity,6,22469,5211.44,2918
+January 2011,Quantity,7,85099B,5047.65,2747
+January 2011,Quantity,8,21175,4572.16,2410
+January 2011,Quantity,9,40016,704.92,2128
+January 2011,Quantity,10,22492,1181.67,1914
+January 2011 France,Revenue,1,21381,835.20,576
+January 2011 France,Revenue,2,85014A,493.05,99
+January 2011 France,Revenue,3,85014B,493.05,99
+January 2011 France,Revenue,4,20750,378.30,50
+January 2011 France,Revenue,5,22551,317.40,204
+January 2011 France,Revenue,6,22423,238.95,21
+January 2011 France,Revenue,7,84879,232.00,160
+January 2011 France,Revenue,8,22215,226.10,29
+January 2011 France,Revenue,9,21843,219.00,20
+January 2011 France,Revenue,10,22554,217.80,132
+January 2011 France,Quantity,1,21381,835.20,576
+January 2011 France,Quantity,2,22492,140.40,216
+January 2011 France,Quantity,3,22551,317.40,204
+January 2011 France,Quantity,4,21212,90.00,192
+January 2011 France,Quantity,5,21883,42.96,168
+January 2011 France,Quantity,6,84879,232.00,160
+January 2011 France,Quantity,7,10002,132.60,156
+January 2011 France,Quantity,8,22554,217.80,132
+January 2011 France,Quantity,9,22556,217.80,132
+January 2011 France,Quantity,10,21731,198.00,120
+November 2011 Germany,Revenue,1,22423,1215.30,110
+November 2011 Germany,Revenue,2,23245,497.40,116
+November 2011 Germany,Revenue,3,23084,486.48,264
+November 2011 Germany,Revenue,4,22326,387.90,138
+November 2011 Germany,Revenue,5,22629,387.00,228
+November 2011 Germany,Revenue,6,22625,326.40,42
+November 2011 Germany,Revenue,7,23480,273.75,73
+November 2011 Germany,Revenue,8,22077,257.40,132
+November 2011 Germany,Revenue,9,22551,247.50,150
+November 2011 Germany,Revenue,10,23319,219.36,96
+November 2011 Germany,Quantity,1,84598,60.48,288
+November 2011 Germany,Quantity,2,23084,486.48,264
+November 2011 Germany,Quantity,3,22629,387.00,228
+November 2011 Germany,Quantity,4,21212,99.00,180
+November 2011 Germany,Quantity,5,23212,194.76,180
+November 2011 Germany,Quantity,6,23294,132.00,176
+November 2011 Germany,Quantity,7,23211,179.76,168
+November 2011 Germany,Quantity,8,23293,112.08,152
+November 2011 Germany,Quantity,9,23295,112.08,152
+November 2011 Germany,Quantity,10,22551,247.50,150
+Partial December 2011,Revenue,1,23843,168469.60,80995
+Partial December 2011,Revenue,2,23084,9628.46,4304
+Partial December 2011,Revenue,3,22086,6867.76,2088
+Partial December 2011,Revenue,4,22423,5994.12,449
+Partial December 2011,Revenue,5,21137,5582.43,1574
+Partial December 2011,Revenue,6,22197,5423.80,6217
+Partial December 2011,Revenue,7,22413,3996.70,1450
+Partial December 2011,Revenue,8,23355,3974.68,680
+Partial December 2011,Revenue,9,23582,3852.28,2101
+Partial December 2011,Revenue,10,22727,3814.40,1060
+Partial December 2011,Quantity,1,23843,168469.60,80995
+Partial December 2011,Quantity,2,22197,5423.80,6217
+Partial December 2011,Quantity,3,23084,9628.46,4304
+Partial December 2011,Quantity,4,23582,3852.28,2101
+Partial December 2011,Quantity,5,22086,6867.76,2088
+Partial December 2011,Quantity,6,21137,5582.43,1574
+Partial December 2011,Quantity,7,20668,175.20,1474
+Partial December 2011,Quantity,8,22413,3996.70,1450
+Partial December 2011,Quantity,9,84077,379.17,1367
+Partial December 2011,Quantity,10,84879,2162.74,1330

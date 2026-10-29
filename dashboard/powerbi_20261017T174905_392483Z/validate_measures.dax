@@ -1,0 +1,91 @@
+// UNEXECUTED. Run in Desktop DAX Query view AFTER creating the measures.
+// Fresh query context; UI slicer selections are not automatically inherited.
+// Compare to expected_filter_totals.csv; round GBP and percentage points to 2 dp.
+EVALUATE
+UNION (
+    CALCULATETABLE ( ROW (
+        "Scenario", "All",
+        "RevenueGBP", [Revenue GBP],
+        "Orders", [Completed Orders],
+        "Units", [Units Sold],
+        "AOV_GBP", [Average Order Value GBP],
+        "KnownCustomers", [Known Customers],
+        "RepeatCustomers", [Repeat Customers],
+        "RepeatCustomerPct", [Repeat Customer Rate] * 100,
+        "RetainedMissingCustomerRows", [Retained Missing Customer Lines],
+        "RawRows", [Raw Lines],
+        "ExcludedRows", [Excluded Lines],
+        "RawMissingCustomerRows", [Raw Missing Customer Lines]
+    ), DATESBETWEEN ( DimDate[Date], DATE (2010, 12, 1), DATE (2011, 12, 9) ) ),
+    CALCULATETABLE ( ROW (
+        "Scenario", "United Kingdom",
+        "RevenueGBP", [Revenue GBP],
+        "Orders", [Completed Orders],
+        "Units", [Units Sold],
+        "AOV_GBP", [Average Order Value GBP],
+        "KnownCustomers", [Known Customers],
+        "RepeatCustomers", [Repeat Customers],
+        "RepeatCustomerPct", [Repeat Customer Rate] * 100,
+        "RetainedMissingCustomerRows", [Retained Missing Customer Lines],
+        "RawRows", [Raw Lines],
+        "ExcludedRows", [Excluded Lines],
+        "RawMissingCustomerRows", [Raw Missing Customer Lines]
+    ), DATESBETWEEN ( DimDate[Date], DATE (2010, 12, 1), DATE (2011, 12, 9) ), TREATAS ( {"United Kingdom"}, DimCountry[Country] ) ),
+    CALCULATETABLE ( ROW (
+        "Scenario", "January 2011",
+        "RevenueGBP", [Revenue GBP],
+        "Orders", [Completed Orders],
+        "Units", [Units Sold],
+        "AOV_GBP", [Average Order Value GBP],
+        "KnownCustomers", [Known Customers],
+        "RepeatCustomers", [Repeat Customers],
+        "RepeatCustomerPct", [Repeat Customer Rate] * 100,
+        "RetainedMissingCustomerRows", [Retained Missing Customer Lines],
+        "RawRows", [Raw Lines],
+        "ExcludedRows", [Excluded Lines],
+        "RawMissingCustomerRows", [Raw Missing Customer Lines]
+    ), DATESBETWEEN ( DimDate[Date], DATE (2011, 1, 1), DATE (2011, 1, 31) ) ),
+    CALCULATETABLE ( ROW (
+        "Scenario", "January 2011 France",
+        "RevenueGBP", [Revenue GBP],
+        "Orders", [Completed Orders],
+        "Units", [Units Sold],
+        "AOV_GBP", [Average Order Value GBP],
+        "KnownCustomers", [Known Customers],
+        "RepeatCustomers", [Repeat Customers],
+        "RepeatCustomerPct", [Repeat Customer Rate] * 100,
+        "RetainedMissingCustomerRows", [Retained Missing Customer Lines],
+        "RawRows", [Raw Lines],
+        "ExcludedRows", [Excluded Lines],
+        "RawMissingCustomerRows", [Raw Missing Customer Lines]
+    ), DATESBETWEEN ( DimDate[Date], DATE (2011, 1, 1), DATE (2011, 1, 31) ), TREATAS ( {"France"}, DimCountry[Country] ) ),
+    CALCULATETABLE ( ROW (
+        "Scenario", "November 2011 Germany",
+        "RevenueGBP", [Revenue GBP],
+        "Orders", [Completed Orders],
+        "Units", [Units Sold],
+        "AOV_GBP", [Average Order Value GBP],
+        "KnownCustomers", [Known Customers],
+        "RepeatCustomers", [Repeat Customers],
+        "RepeatCustomerPct", [Repeat Customer Rate] * 100,
+        "RetainedMissingCustomerRows", [Retained Missing Customer Lines],
+        "RawRows", [Raw Lines],
+        "ExcludedRows", [Excluded Lines],
+        "RawMissingCustomerRows", [Raw Missing Customer Lines]
+    ), DATESBETWEEN ( DimDate[Date], DATE (2011, 11, 1), DATE (2011, 11, 30) ), TREATAS ( {"Germany"}, DimCountry[Country] ) ),
+    CALCULATETABLE ( ROW (
+        "Scenario", "Partial December 2011",
+        "RevenueGBP", [Revenue GBP],
+        "Orders", [Completed Orders],
+        "Units", [Units Sold],
+        "AOV_GBP", [Average Order Value GBP],
+        "KnownCustomers", [Known Customers],
+        "RepeatCustomers", [Repeat Customers],
+        "RepeatCustomerPct", [Repeat Customer Rate] * 100,
+        "RetainedMissingCustomerRows", [Retained Missing Customer Lines],
+        "RawRows", [Raw Lines],
+        "ExcludedRows", [Excluded Lines],
+        "RawMissingCustomerRows", [Raw Missing Customer Lines]
+    ), DATESBETWEEN ( DimDate[Date], DATE (2011, 12, 1), DATE (2011, 12, 9) ) )
+)
+ORDER BY [Scenario]

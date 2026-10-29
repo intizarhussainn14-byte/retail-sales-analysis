@@ -1,0 +1,14 @@
+{
+  "input": "data/processed/cleaning_20261017T165110_899648Z/completed_sales.csv",
+  "input_sha256": "094fbf634055c2cd3f6410cf0ebaff28948c24cee62ccba7461d4d0f73bb202a",
+  "cleaning_summary": "reports/cleaning_20261017T165110_899648Z/cleaning_summary.json",
+  "coverage_start": "2010-12-01 08:26:00",
+  "coverage_end": "2011-12-09 12:50:00",
+  "invoice_conflicts": {
+    "CustomerID": 0,
+    "Country": 0,
+    "Month": 0
+  },
+  "sql_status": "UNEXECUTED: this Python script does not connect to or execute SQL on any database.",
+  "validation": "PASS: cleaning totals, identifiers/eligibility, money consistency, monthly/country revenue and orders, known customer order reconciliation."
+}

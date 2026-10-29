@@ -1,0 +1,14 @@
+{
+  "name": "Retail Sales GBP",
+  "dataColors": [
+    "#137E8D",
+    "#214761",
+    "#D29B32",
+    "#717E8A",
+    "#9B4957",
+    "#508563"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#183249",
+  "tableAccent": "#137E8D"
+}
